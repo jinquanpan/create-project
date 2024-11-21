@@ -9,15 +9,20 @@
     "dev-build": "cross-env BUILD=dev vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dev-cdn-push": "cross-env BUILD=dev SETVER=run node shell/push.js",
-    "cdn-push": "cross-env BUILD=production SETVER=run node shell/push.js"
+    "cdn-push-dev": "cross-env BUILD=dev node shell/push-cdn.js",
+    "cdn-push-prod": "cross-env BUILD=production node shell/push-cdn.js",
+    "cdn-html": "cross-env BUILD=production node shell/pushHtml.js"
   },
   "dependencies": {
     "antd": "^5.19.2",
+    "chalk": "^5.3.0",
     "inquirer": "^10.0.3",
+    "qiniu": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ssh2-sftp-client": "^10.0.3"
+    "single-line-log": "^1.1.2",
+    "ssh2-sftp-client": "^10.0.3",
+    "superagent": "^10.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -28,7 +33,6 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "iofs": "^1.5.3",
     "less": "^4.2.0",
     "react-router-dom": "^6.25.1",
     "vite": "^5.3.4"

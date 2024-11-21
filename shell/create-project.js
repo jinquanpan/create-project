@@ -35,7 +35,27 @@ let questions = [
 ];
 
 inquirer.prompt(questions).then((answers) => {
-  let address = path.resolve(answers.address, answers.projectName);
+  let i = answers.address[0] === "/" ? 1 : 0;
+  let arr = answers.address.split("/");
+  let catalog = arr[i];
+  let catalogPath = arr.slice(i + 1).join("/");
+
+  let address = "";
+  // 相对路径
+  if (
+    answers.address.slice(0, 2) === "./" ||
+    answers.address.slice(0, 3) === "../"
+  ) {
+    address = path.resolve(answers.address, answers.projectName);
+
+    // 绝对路径
+  } else {
+    address = path.join(
+      `${catalog.toUpperCase()}:`,
+      catalogPath,
+      answers.projectName
+    );
+  }
 
   // // 创建目录
   fsExtra.ensureDirSync(address);
@@ -44,12 +64,12 @@ inquirer.prompt(questions).then((answers) => {
   fsExtra.copySync("./template", address);
 
   // 修改package.json 名称
-  console.log("projectPath-------", address);
   fs.readFile(path.resolve(address, "package.json"), "utf8", (err, data) => {
     let modifiedData = data.replace(
       '"name": "vite-react"',
       `"name": "${answers.projectName}"`
     );
     fs.writeFileSync(path.resolve(address, "package.json"), modifiedData);
+    console.log("成功+++++", address);
   });
 });

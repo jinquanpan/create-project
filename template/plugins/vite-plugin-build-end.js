@@ -1,11 +1,10 @@
-import checkFileExistence from "../shell/push";
+import checkFileExistence from "../shell/push-cdn";
 
 export default function vitePluginBuildEnd() {
   return {
     name: "vite-plugin-build-end",
     apply: "build",
     closeBundle: () => {
-      console.log("上传cdn--------------");
       checkFileExistence();
     },
   };
