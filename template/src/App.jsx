@@ -1,19 +1,25 @@
 import "./App.less";
 import Home from "./pages/Home";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import A from "./pages/A";
-import { Routes, Route, useNavigate } from "react-router-dom";
-function App() {
-  let navigate = useNavigate();
+import Layout from "./pages/layout";
 
-  return (
-    <div className="do-page">
-      <div onClick={() => navigate("/A")}>头部111</div>
-      <Routes>
-        <Route path="/Home" element={<A />} /> {/* 👈 Renders at /app/ */}
-        <Route path="/A" element={<Home />} /> {/* 👈 Renders at /app/ */}
-      </Routes>
-    </div>
-  );
+const router = createHashRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/A",
+    element: <A />,
+  },
+  {
+    path: "/Layout",
+    element: <Layout />,
+  },
+]);
+function App() {
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
