@@ -14,12 +14,15 @@
     "cdn-html": "cross-env BUILD=production node shell/pushHtml.js"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "antd": "^5.19.2",
     "chalk": "^5.3.0",
     "inquirer": "^10.0.3",
     "qiniu": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
+    "redux-persist": "^6.0.0",
     "single-line-log": "^1.1.2",
     "ssh2-sftp-client": "^10.0.3",
     "superagent": "^10.1.1"
