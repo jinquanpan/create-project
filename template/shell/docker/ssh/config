@@ -1,0 +1,5 @@
+Host git.clickwifi.net
+    HostName git.clickwifi.net
+    User git
+    IdentityFile /root/.ssh/id-rsa
+    IdentitiesOnly yes

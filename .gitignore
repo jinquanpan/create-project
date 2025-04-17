@@ -12,7 +12,6 @@
 /dist
 /h5
 /shell
-/template
 
 # misc
 .DS_Store
