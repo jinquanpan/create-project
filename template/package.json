@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "cross-env BUILD=production vite build",
+    "dev": "vite --mode development",
+    "build": "cross-env vite build",
     "dev-build": "cross-env BUILD=dev vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "antd": "^5.19.2",
+    "axios": "^1.8.4",
     "chalk": "^5.3.0",
     "inquirer": "^10.0.3",
     "qiniu": "^7.0.1",
